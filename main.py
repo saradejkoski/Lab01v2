@@ -78,31 +78,40 @@ def menu():
             quit()
 
 
-
 def printStatsInfo(stats):
+    """
+    This function prints the number of expansions and the time taken for a single run of the algorithm.
+    Input: A stats object containing the number of expansions and the time taken for a single run.
+    Output: Prints the number of expansions and time taken to the console.
+    """
+
     print("Expansions: " + str(stats.expansions))
     print("Time taken: " + str(round(stats.time, 3)))
     print()
 
 
 def printAllStats(stats):
+    """
+    This function prints statistics information about the algorithm's performance.
+    It takes in a list of stats objects, which hold information about the algorithm's performance in each run.
+    """
+
     expansions = 0
     time = 0
     expansionsList = []
     timeList = []
 
-
-
+    # Loop through each `stats` object in the list, and add up the values for each statistic
     for x in stats:
         expansions += x.expansions
         time += x.time
         expansionsList.append(x.expansions)
         timeList.append(x.time)
 
+    expansionsMean = expansions / 100  # Calculate the mean number of expansions across all runs
+    timeMean = time / 100  # Calculate the mean time taken across all runs
 
-    expansionsMean = expansions / 100
-    timeMean = time / 100
-
+    # Print out the total and mean values for each statistic
     print("Expansions [total/mean]: " + str(expansions) + " / " + str(expansionsMean))
     print("Time [total/mean]: " + str(round(time, 3)) + " / " + str(round(timeMean, 3)))
     print()
